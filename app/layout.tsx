@@ -32,10 +32,16 @@ export default function RootLayout({
       <body
         className={`${manrope.className} ${geistSans.variable} ${geistMono.variable} antialiased `}
       >
-        <Navbar />
-        <div className="min-h-screen w-full bg-white text-black flex">
+        <div className="flex h-screen ">
+          <Navbar />
           <SideBar />
-          <div className="p-8 w-full">{children}</div>
+          {/* <div className="min-h-screen pt-10   bg-white text-black flex"> */}
+          {/* <div className="fixed top-10 min-w-[80px] max-w-[250px] h-screen flex-shrink-0"> */}
+          {/* </div> */}
+          <div className="sidebar-expanded:px-6 sidebar-expanded:ml-80 ml-20 mt-16 p-8 transition-all relative flex flex-col flex-1 lg:overflow-y-auto lg:overflow-x-hidden">
+            {children}
+          </div>
+          {/* </div> */}
         </div>
       </body>
     </html>

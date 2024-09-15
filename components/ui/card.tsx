@@ -13,11 +13,11 @@ export default function Card(props: CardProps) {
   return (
     <CardContent>
       <section className="flex justify-between gap-2">
-        <p className="font-semibold">{props.label}</p>
+        <p className="font-medium">{props.label}</p>
         <props.icon className="h-8 w-8 text-gray-400" />
       </section>
       <section className="flex flex-col gap-1">
-        <h2 className="text-2xl font-bold">{props.amount}</h2>
+        <h2 className="text-xl font-bold">{props.amount}</h2>
         <p className="text-xs text-gray-500">{props.description}</p>
       </section>
     </CardContent>
@@ -29,7 +29,7 @@ export function CardContent(props: React.HTMLAttributes<HTMLDivElement>) {
     <div
       {...props}
       className={cn(
-        "flex w-full flex-col gap-3 rounded-xl border p-5 shadow",
+        "flex w-full flex-col gap-3 rounded-xl border p-4 shadow",
         props.className
       )}
     />

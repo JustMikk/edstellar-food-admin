@@ -19,38 +19,48 @@ import {
   UserRound,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useWindowSize, useWindowWidth } from "@react-hook/window-size";
+import { useWindowWidth } from "@react-hook/window-size";
 
 type Props = {};
 
 export default function SideBar({}: Props) {
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+  const [isclient, setIsclient] = useState(false);
 
+  useEffect(() => {
+    setIsclient(true);
+  }, []);
+  useEffect(() => {
+    if (isCollapsed) {
+      document.body.classList.remove("sidebar-expanded");
+    } else {
+      document.body.classList.add("sidebar-expanded");
+    }
+  }, [isCollapsed]);
   const onlyWidth = useWindowWidth();
   const mobilewidth = onlyWidth < 768;
-  useEffect(() => {
-    setIsClient(true); // Ensures the component is mounted on the client
-  }, []);
-  if (!isClient) {
-    return null; // Prevent rendering on the server
+
+  if (!isclient) {
+    return null;
   }
 
   return (
-    <div className="relative min-w-[80px] border-r pl-3 pr-9 xl:px-3 pb-10 pt-20 bg-slate-300">
+    <div
+      className={`fixed flex flex-col top-16 left-auto h-full border-r bg-slate-300 transition-all duration-300 ease-in-out z-40 ${
+        isCollapsed ? "w-20" : "w-80"
+      } ${mobilewidth ? "w-full" : ""}`}
+    >
       {!mobilewidth && (
         <div className="absolute right-[-20px] top-7">
           <Button
-            className="rounded-full p-4  bg-slate-400/90 hover:bg-slate-400 text-black"
-            onClick={() => {
-              setIsCollapsed(!isCollapsed);
-            }}
+            className="rounded-full p-4 bg-slate-400/90 hover:bg-slate-400 text-black"
+            onClick={() => setIsCollapsed(!isCollapsed)}
           >
             {isCollapsed ? <ChevronRight /> : <ChevronLeft />}
           </Button>
         </div>
       )}
-      <div className="mb-72">
+      <div className="pt-20 pb-10">
         <Nav
           isCollapsed={mobilewidth ? true : isCollapsed}
           links={[
