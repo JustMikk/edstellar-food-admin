@@ -41,7 +41,7 @@ export default function BarChart({}: Props) {
           stroke="#888888"
           fontSize={12}
         />
-        <Bar dataKey={"total"} radius={[4, 4, 0, 0]} />
+        <Bar fill="#3BAD68" dataKey={"total"} radius={[4, 4, 0, 0]} />
       </BarGraph>
     </ResponsiveContainer>
   );

@@ -13,6 +13,7 @@ import {
   ListOrdered,
   LogOut,
   Settings,
+  ShoppingBasket,
   StoreIcon,
   User2Icon,
   UserCircleIcon,
@@ -89,10 +90,10 @@ export default function SideBar({}: Props) {
               href: "/suppliers",
             },
             {
-              title: "Orders",
-              icon: ListOrdered,
+              title: "Products",
+              icon: ShoppingBasket,
               variant: "ghost",
-              href: "/orders",
+              href: "/products",
             },
             {
               title: "Manage Store",
